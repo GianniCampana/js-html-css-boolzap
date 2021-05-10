@@ -21,7 +21,7 @@
     <div id="app" class="container">
       <div class="col-left">
         <header class="head-left">
-          <div class="profile" v-for='user'>
+          <div class="profile">
             <img :src="user.avatar" alt="img nome utente" />
             <h3>{{user.name}}</h3>
           </div>
@@ -59,7 +59,7 @@
             <img :src="contacts[counterContact].avatar" alt="" />
             <span>
               <h3>{{contacts[counterContact].name}}</h3>
-              <p>Ultimo accesso oggi alle</p>
+              <p>Ultimo accesso {{now}}</p>
             </span>
           </div>
 
@@ -85,13 +85,18 @@
         </main>
         <footer class="foot-right">
           <i class="far fa-smile"></i>
-          <input type="text" placeholder="Scrivi un messaggio" />
+          <input v-model='messAggiunto' @keyup.enter='addMess' type="text" placeholder="Scrivi un messaggio"  />
           <i class="fas fa-microphone"></i>
         </footer>
       </div>
     </div>
     <!-- end #app -->
 
+     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
+     <script>
+       dayjs.locale('it');
+     </script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

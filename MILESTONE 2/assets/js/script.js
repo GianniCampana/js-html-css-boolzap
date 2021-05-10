@@ -9,8 +9,9 @@ const app = new Vue({
             name: 'Nome utente',
             avatar: 'assets/img/avatar_7.jpg'
         },
-
+        now:dayjs().format('DD/MM/YY HH:mm:ss') ,
         counterContact: 0,
+        messAggiunto: '',
       
 
         contacts: [
@@ -101,16 +102,53 @@ const app = new Vue({
 
     },
     methods:{
-      contatto(){
-          this.counterContact++
-          this.contacts.forEach((user,index) => {
-          return user,index
-        });
-        return user
-      }
-      
+        
+
+
+      addMess(){
+        
+               this.contacts.forEach((contact,index)=>{
+                   let {messages}=contact;
+                   if(index===this.counterContact && this.messAggiunto.length>0){
+                       messages.push(
+                           {
+                               date:this.now,
+                               text:this.messAggiunto,
+                               status:'sent'
+                           }
+                           
+                       )
+                       this.messAggiunto='';
+                       setTimeout(function(){
+                            messages.push(
+                                {
+                                    date:this.now,
+                                    text:'Ok!!!!',
+                                    status:'received'
+                                }
+                            )
+                       },1000)
+                       
+                   }
+               })
+              
 
         
-    }
+
+        }/* end addMess */
+
+        
+
+
+
+     
+
+
+ }/* end methods */
+
     
-});
+});/* end app */
+
+
+
+

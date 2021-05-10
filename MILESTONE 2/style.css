@@ -161,8 +161,8 @@ body {
 .lista-utenti ul li:hover {
   background-color: rgb(216, 213, 213);
 }
-.active{
-  background-color: rgb(170, 170, 170);
+.lista-utenti ul li.active{
+  background-color: rgb(216, 213, 213);
 }
 .lista-utenti ul li img {
   width: 60px;
