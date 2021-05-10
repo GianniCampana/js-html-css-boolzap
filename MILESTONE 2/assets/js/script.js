@@ -4,6 +4,15 @@ const app = new Vue({
     el: '#app',
     data:{
 
+        user:
+        {
+            name: 'Nome utente',
+            avatar: 'assets/img/avatar_7.jpg'
+        },
+
+        counterContact: 0,
+      
+
         contacts: [
             {
                 name: 'Michele',
@@ -73,7 +82,7 @@ const app = new Vue({
             },
             {
                 name: 'Luisa',
-                avatar: 'assets/img/avatar_4.jpg',
+                avatar: 'assets/img/avatar_6.jpg',
                 visible: true,
                 messages: [
                     {
@@ -92,9 +101,16 @@ const app = new Vue({
 
     },
     methods:{
+      contatto(){
+          this.counterContact++
+          this.contacts.forEach((user,index) => {
+          return user,index
+        });
+        return user
+      }
+      
 
+        
     }
-
-
-
+    
 });
