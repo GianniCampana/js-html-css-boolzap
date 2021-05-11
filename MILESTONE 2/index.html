@@ -39,13 +39,19 @@
         <main class="main-left">
           <div class="search-chat">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Cerca o inizia una nuova chat" />
+            <input v-model='nomeCercato'
+                   type="text" 
+                   placeholder="Cerca o inizia una nuova chat" />
           </div>
 
           <div class="lista-utenti">
             <ul>
-              <li v-for="(utente,index) in contacts" @click="counterContact = index" :class="(index === counterContact) ? 'active' : null">
-                <img :src="utente.avatar" alt="">
+              <li
+                v-for="(utente,index) in contacts"
+                v-if="utente.name.includes(nomeCercato) ? utente.visible = true : utente.visible = false"
+                @click="counterContact = index"
+                :class="(index === counterContact) ? 'active' : null">
+                <img :src="utente.avatar" alt="" />
                 <p>{{utente.name}}</p>
               </li>
             </ul>
@@ -71,8 +77,11 @@
         </header>
 
         <main class="main-right">
-
-          <div class="msg" v-for=' user in contacts[counterContact].messages' :class='user.status'>
+          <div
+            class="msg"
+            v-for=" user in contacts[counterContact].messages"
+            :class="user.status"
+          >
             <div class="text-msg">
               <p>
                 {{user.text}}
@@ -81,22 +90,26 @@
             </div>
             <div class="date-send">{{user.date}}</div>
           </div>
-
         </main>
         <footer class="foot-right">
           <i class="far fa-smile"></i>
-          <input v-model='messAggiunto' @keyup.enter='addMess' type="text" placeholder="Scrivi un messaggio"  />
+          <input
+            v-model="messAggiunto"
+            @keyup.enter="addMess"
+            type="text"
+            placeholder="Scrivi un messaggio"
+          />
           <i class="fas fa-microphone"></i>
         </footer>
       </div>
     </div>
     <!-- end #app -->
 
-     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
-     <script>
-       dayjs.locale('it');
-     </script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
+    <script>
+      dayjs.locale("it");
+    </script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

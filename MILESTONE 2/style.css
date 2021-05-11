@@ -243,6 +243,7 @@ body {
 
 .msg {
   max-width: 40%;
+  min-width: 30%;
   min-height: 55px;
   text-align: center;
   font-family: "Lato", sans-serif;
@@ -250,6 +251,7 @@ body {
   padding-right: 7px;
   padding-bottom: 4px;
   margin-bottom: 20px;
+  
 }
 
 .text-msg p {
@@ -260,7 +262,8 @@ body {
   justify-content: space-between;
   padding-top: 3%;
   padding-right: 35px;
-  margin-left: 10px;
+  margin-left: 10px; 
+  word-break:break-all;
 }
 .text-msg p i {
   color: gray;

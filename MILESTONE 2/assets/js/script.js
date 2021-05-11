@@ -12,6 +12,7 @@ const app = new Vue({
         now:dayjs().format('DD/MM/YY HH:mm:ss') ,
         counterContact: 0,
         messAggiunto: '',
+        nomeCercato: '',
       
 
         contacts: [
@@ -112,7 +113,7 @@ const app = new Vue({
                    if(index===this.counterContact && this.messAggiunto.length>0){
                        messages.push(
                            {
-                               date:this.now,
+                               date:dayjs().format('DD/MM/YY HH:mm:ss'),
                                text:this.messAggiunto,
                                status:'sent'
                            }
@@ -122,12 +123,13 @@ const app = new Vue({
                        setTimeout(function(){
                             messages.push(
                                 {
-                                    date:this.now,
+                                    date:dayjs().format('DD/MM/YY HH:mm:ss'),
                                     text:'Ok!!!!',
                                     status:'received'
                                 }
                             )
                        },1000)
+                       
                        
                    }
                })
@@ -137,7 +139,7 @@ const app = new Vue({
 
         }/* end addMess */
 
-        
+
 
 
 
