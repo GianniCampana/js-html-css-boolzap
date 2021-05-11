@@ -48,7 +48,7 @@
             <ul>
               <li
                 v-for="(utente,index) in contacts"
-                v-if="utente.name.includes(nomeCercato) ? utente.visible = true : utente.visible = false"
+                v-if="(utente.name.toUpperCase().includes(nomeCercato.toUpperCase())) ? utente.visible=true : utente.visible=false"
                 @click="counterContact = index"
                 :class="(index === counterContact) ? 'active' : null">
                 <img :src="utente.avatar" alt="" />
@@ -65,7 +65,7 @@
             <img :src="contacts[counterContact].avatar" alt="" />
             <span>
               <h3>{{contacts[counterContact].name}}</h3>
-              <p>Ultimo accesso {{now}}</p>
+              <p>{{lastAccess()}} </p>
             </span>
           </div>
 
@@ -95,7 +95,7 @@
           <i class="far fa-smile"></i>
           <input
             v-model="messAggiunto"
-            @keyup.enter="addMess"
+            @keyup.enter="addMess()"
             type="text"
             placeholder="Scrivi un messaggio"
           />

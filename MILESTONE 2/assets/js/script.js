@@ -13,6 +13,9 @@ const app = new Vue({
         counterContact: 0,
         messAggiunto: '',
         nomeCercato: '',
+        ultimoAccesso: '',
+        
+        
       
 
         contacts: [
@@ -128,16 +131,36 @@ const app = new Vue({
                                     status:'received'
                                 }
                             )
-                       },1000)
-                       
-                       
+                       },1000) 
                    }
                })
-              
+        },/* end addMess */
 
+        lastAccess(){
+           
+           this.contacts.forEach((utent)=>{
+              if(utent === this.contacts[this.counterContact]){
+                utent.messages.forEach((mess,index)=>{
+                    if(index === utent.messages.length-1){
+                        this.ultimoAccesso = mess.date;
+                    }
+                })
+              }
+           })
+           return 'Ultimo accesso: ' + this.ultimoAccesso;
+           
+           
+        }/* end lastAccess */
+
+        /* utente.messages.forEach((mess,index)=>{
+            if(index === utente.messages.length-1){
+                this.ultimoAccesso = mess.date;
+            }
+        }) */
+        
+        
         
 
-        }/* end addMess */
 
 
 

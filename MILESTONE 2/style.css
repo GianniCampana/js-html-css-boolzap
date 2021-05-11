@@ -209,6 +209,8 @@ body {
   margin-left: 10px;
 }
 .name-access span p {
+  width: 300px;
+  
   margin-top: 3px;
   color: gray;
 }
