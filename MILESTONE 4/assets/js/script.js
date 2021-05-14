@@ -109,39 +109,34 @@ const app = new Vue({
         
 
 
-      addMess(){
+        addMess(){
+               
+         if(this.messAggiunto.length>0){
+         this.contacts[this.counterContact].messages.push({
+            date:dayjs().format('DD/MM/YY HH:mm:ss'),
+            text:this.messAggiunto,
+            status:'sent'
+           })
+         
+           this.messAggiunto='';
         
-               this.contacts.forEach((contact,index)=>{
-                   let {messages}=contact;
-                   if(index===this.counterContact && this.messAggiunto.length>0){
-                       messages.push(
-                           {
-                               date:dayjs().format('DD/MM/YY HH:mm:ss'),
-                               text:this.messAggiunto,
-                               status:'sent'
-                           }
-                           
-                       )
-                       this.messAggiunto='';
-                       setTimeout(function(){
-                            messages.push(
-                                {
-                                    date:dayjs().format('DD/MM/YY HH:mm:ss'),
-                                    text:'Ok!!!!',
-                                    status:'received'
-                                }
-                            )
-                       },1000) 
-                   }
-               })
+           setTimeout(() => {
+            this.contacts[this.counterContact].messages.push(
+                {
+                    date:dayjs().format('DD/MM/YY HH:mm:ss'),
+                    text:'Ok!!!!',
+                    status:'received'
+                }
+            )
+           },1000) 
+
+         }
+              
         },/* end addMess */
 
         lastAccess(index){
            let contactMsg = this.contacts[index].messages;
            return contactMsg[contactMsg.length-1].date;
-           
-           
-           
         },/* end lastAccess */
 
         lastMessage(index){
@@ -151,26 +146,17 @@ const app = new Vue({
                  return spliceMsg;
              }
              return contactLastMess[contactLastMess.length-1].text
-        }
+        }/* end lastMessage */
 
        
 
 
- }/* end methods */
+    }/* end methods */
 
     
 });/* end app */
 
-/* this.contacts.forEach((utent)=>{
-              if(utent === this.contacts[this.counterContact]){
-                utent.messages.forEach((mess,index)=>{
-                    if(index === utent.messages.length-1){
-                        this.ultimoAccesso = mess.date;
-                    }
-                })
-              }
-           })
-           return this.ultimoAccesso; */
+
 
 
 
