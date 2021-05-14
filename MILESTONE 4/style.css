@@ -169,8 +169,27 @@ body {
   border-radius: 50%;
   margin-left: 10px;
 }
-.lista-utenti ul li p {
+.lista-utenti ul li .nameMess{
+  width: 192px;
+  height: 65px;
+  
+}
+.lista-utenti ul li .utentName {
   margin-left: 10px;
+}
+.lista-utenti ul li .lastAccess{
+    
+    color: gray;
+    margin-left: 8px;
+    margin-top: 8px;
+    height: 30%;
+    font-size: 12px;
+}
+.lista-utenti ul li .lastMessage{
+  font-size: 13px;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: gray;
 }
 /* /lista utenti */
 
@@ -255,10 +274,14 @@ body {
   margin-bottom: 20px;
   
 }
+.text-msg{
+  
+  position: relative;
+}
 
 .text-msg p {
   min-height: 40px;
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -266,11 +289,16 @@ body {
   padding-right: 35px;
   margin-left: 10px; 
   word-break:break-all;
+  
 }
-.text-msg p i {
+.text-msg i {
   color: gray;
   cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: 20px;
   visibility: hidden;
+  
 }
 .msg:hover .fa-chevron-down {
   visibility: visible;

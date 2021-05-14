@@ -136,9 +136,32 @@ const app = new Vue({
                })
         },/* end addMess */
 
-        lastAccess(){
+        lastAccess(index){
+           let contactMsg = this.contacts[index].messages;
+           return contactMsg[contactMsg.length-1].date;
            
-           this.contacts.forEach((utent)=>{
+           
+           
+        },/* end lastAccess */
+
+        lastMessage(index){
+             let contactLastMess = this.contacts[index].messages;
+             if(contactLastMess[contactLastMess.length-1].text.length>30){
+                 let spliceMsg = contactLastMess[contactLastMess.length-1].text.slice(0, 30) + "...";
+                 return spliceMsg;
+             }
+             return contactLastMess[contactLastMess.length-1].text
+        }
+
+       
+
+
+ }/* end methods */
+
+    
+});/* end app */
+
+/* this.contacts.forEach((utent)=>{
               if(utent === this.contacts[this.counterContact]){
                 utent.messages.forEach((mess,index)=>{
                     if(index === utent.messages.length-1){
@@ -147,32 +170,7 @@ const app = new Vue({
                 })
               }
            })
-           return 'Ultimo accesso: ' + this.ultimoAccesso;
-           
-           
-        }/* end lastAccess */
-
-        /* utente.messages.forEach((mess,index)=>{
-            if(index === utente.messages.length-1){
-                this.ultimoAccesso = mess.date;
-            }
-        }) */
-        
-        
-        
-
-
-
-
-
-
-     
-
-
- }/* end methods */
-
-    
-});/* end app */
+           return this.ultimoAccesso; */
 
 
 

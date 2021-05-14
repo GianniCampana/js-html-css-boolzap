@@ -52,7 +52,14 @@
                 @click="counterContact = index"
                 :class="(index === counterContact) ? 'active' : null">
                 <img :src="utente.avatar" alt="" />
-                <p>{{utente.name}}</p>
+                <span class="nameMess">
+                  <p class="utentName">{{utente.name}}</p>
+                  <p class="lastMessage">{{lastMessage(index)}}</p>
+                </span>
+
+                <span class="lastAccess">
+                  <p>{{lastAccess(index)}} </p>
+                </span>
               </li>
             </ul>
           </div>
@@ -65,7 +72,7 @@
             <img :src="contacts[counterContact].avatar" alt="" />
             <span>
               <h3>{{contacts[counterContact].name}}</h3>
-              <p>{{lastAccess()}} </p>
+              <p>Ultimo accesso: {{lastAccess(counterContact)}} </p>
             </span>
           </div>
 
@@ -85,8 +92,8 @@
             <div class="text-msg">
               <p>
                 {{user.text}}
-                <i class="fas fa-chevron-down"></i>
               </p>
+              <i class="fas fa-chevron-down"></i>
             </div>
             <div class="date-send">{{user.date}}</div>
           </div>
